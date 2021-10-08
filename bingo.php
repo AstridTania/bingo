@@ -1,42 +1,46 @@
 
 <?php
 
-$carton1=array();
-$aciertos=0;
 
-for ($i=0;$i<=14;$i++){
+<?php
+    $carton=array();
+	$i=0;
+	while (count($carton)<15){
+		$bola=rand(1,60);	
+		if (!(in_array($bola,$carton)))
+		$carton[$i++]=$bola;
+	}
+	var_dump($carton);
 	
-  $numeros= rand(1,60);
-  
-  if(!in_array($numeros,$carton1)){
-  array_push($carton1,$numeros);
-  }
-  
-}
-
- for ($i=0; $i <count($carton1); $i++) { 
-        echo $carton1[$i]," ";
-    }
-
-
-$bombo=array();
-
-for ($i=0;$i<=14;$i++){
 	
-  $bola= rand(1,60);
-  array_push($bolas,$bola);
-}
 
-for ($i=0; $i <count($bolas); $i++) { 
-        echo "  ".$bolas[$i],"  ";
+   $bombo = array();
+   for($j = 0; $j<61; $j++){
+	$bombo[($j)] = $j;
     }
-
-
-$coincidencias = array_intersect($carton1, $bolas);
-
-foreach($coincidencias as $value) {
-    echo "  ". $value;
-}
+    var_dump($bombo);
+	
+	//$bolas= array_rand($bombo,2);  coge un numero aleatorio
+	
+	
+	
+	$aciertos=15;
+	
+ //while($aciertos<15){
+  
+$coincidencias=array();	
+	
+ for($x=0;$x<$aciertos;$x++){
+	 $bolas=array_rand($bombo,2);
+	 if (in_array($bolas,$carton)){
+		 array_push($coincidencias,$bolas);
+		$aciertos=$aciertos+1;
+		}
+	 
+	 
+ }
+ 
+var_dump ($coincidencias);
 
 
 
